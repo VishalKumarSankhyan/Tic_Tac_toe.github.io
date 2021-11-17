@@ -1,7 +1,7 @@
 /* PWA  code start*/
 if ("serviceWorker" in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('https://github.com/VishalKumarSankhyan/Tic_Tac_toe.github.io/tic_tac_toe_service_worker.js').then(() => {
+    navigator.serviceWorker.register('https://vishalkumarsankhyan.github.io/Tic_Tac_toe.github.io/tic_tac_toe_service_worker.js').then(() => {
       console.log('Service Worker Registered')
     })
   })
