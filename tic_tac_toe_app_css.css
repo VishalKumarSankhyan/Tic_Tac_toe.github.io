@@ -1,0 +1,1280 @@
+*{
+    padding: 0px;
+    margin: 0px;
+
+    font-family: 'Poppins', sans-serif!important;
+
+    user-select: none!important;
+    -webkit-user-select: none!important;
+    -webkit-user-drag: none!important;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html{
+    overflow-y: scroll; /*firefox*/
+    scrollbar-width: none; /* internet explorer 10+*/
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+}
+
+html::-webkit-scrollbar{
+    width: 0 !important;
+    display: none!important;
+}
+
+body{
+    /*Disables pull to refresh and overscroll glow effect. still keeps swipe navigations*/
+    /*overscroll-behavior-y: contain;*/
+    background: #fff;
+
+    overflow:hidden; /*firefox*/
+    scrollbar-width: none; /* internet explorer 10+*/
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+}
+
+body::-webkit-scrollbar{
+    width: 0 !important;
+    display: none!important;
+}
+
+.tic_tac_toe_app_body{
+    width: 100%;
+    /*min-width: 240px;*/
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+
+    overflow-y: scroll; /*firefox*/
+    scrollbar-width: none; /* internet explorer 10+*/
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+
+    min-height: 315px;
+    min-width: 235px;
+}
+
+.tic_tac_toe_app_body::-webkit-scrollbar{
+    width: 0 !important;
+    display: none!important;
+}
+
+.tic_tac_toe_app_navbar{
+    position: sticky;
+    top: 0;
+    min-height: 52px;
+    width: 100%;
+    background:#000000;
+    box-shadow: 0 1px 6px 0 rgb(32 33 36 / 40%);
+    z-index: 9;
+}
+
+.tic_tac_toe_title{
+    color: #fff;
+    font-size: 23px;
+    text-align: left;
+
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    height: fit-content;
+    width: fit-content;
+
+    margin: auto 0px;
+    margin-left: 15px;
+}
+
+.tic_tac_toe_menu_dots{
+    position: absolute;
+
+    top:    0px;
+    bottom: 0px;
+    right:  0px;
+    margin: auto 0px;
+    margin-right: 15px;
+
+    height: 20px;
+    width: 5px;
+
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.tic_tac_toe_menu_dot{
+    height: 4px;
+    width:  4px;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.tic_tac_toe_menu_dot_middle{
+    height: 4px;
+    width:  4px;
+    background: #fff;
+    border-radius: 50%;
+    margin:3px 0px;
+}
+
+
+.tic_tac_toe_dot_menu_section{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%), 0px 3px 5px -1px rgb(0 0 0 / 20%);
+    overflow: hidden;
+    z-index: 9;
+    width:  0;
+    height: 0;
+    transition: width 350ms ease-in-out, height 350ms ease-in-out;
+}
+
+.tic_tac_toe_dot_menu_section.open{
+    width: 100px;
+    height: 39px;
+}
+
+.tic_tac_toe_dot_menu_option{
+    font-size: 20px;
+    color: #000000;
+    padding: 8px 10px;
+    white-space: nowrap;
+}
+
+.tic_tac_toe_info_section{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 110vh;
+    width: 100%;
+    background: rgba(24, 23, 23, 0.5);
+    z-index: 99;
+    display: none;
+    opacity: 0;
+    transition: all 0.20s ease-in-out;
+}
+
+.tic_tac_toe_info_section_box_header{
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.tic_tac_toe_info_section_box{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    height: fit-content;
+    width: 80%;
+    max-width: 300px;
+    background: #fff;
+    border-radius: 5px;
+    padding: 15px 12px;
+    box-shadow: 0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%), 0px 3px 5px -1px rgb(0 0 0 / 20%);
+}
+
+.tic_tac_toe_info_section_box_detail{
+    font-size: 16px;
+    line-height: 22px;
+}
+.tic_tac_toe_app_game_body{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: auto;
+
+    overflow-y: scroll; /*firefox*/
+    scrollbar-width: none; /* internet explorer 10+*/
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+}
+.tic_tac_toe_app_game_body::-webkit-scrollbar{
+    display: none!important;
+    width: 0!important;
+}
+.tic_tac_toe_game_main_box{
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    position:absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.tic_tac_toe_top_line{
+    min-height: 100px;
+    width: 5px;
+    background: black;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+.tic_tac_toe_middle_line{
+    min-height: 100px;
+    width: 5px;
+    background: black;
+}
+
+.tic_tac_toe_bottom_line{
+    min-height: 100px;
+    width: 5px;
+    background: black;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.tic_tac_toe_row_line{
+    min-height: 5px;
+    width: 310px;
+    background: black;
+    border-radius: 50px;
+}
+
+.tic_tac_toe_app_box_row{
+    display: flex;
+}
+
+.tic_tac_toe_app_box{
+    min-height: 100px;
+    min-width: 100px;
+    cursor: pointer;
+}
+
+.tic_tac_toe_cross{
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.tic_tac_toe_cross_svg{
+    height: 100px;
+    width: 100px;
+    position: relative;
+    display: none;
+}
+
+.tic_tac_toe_cross_svg svg{
+    height:     80px;
+    width:      80px;
+    max-width:  80px;
+    max-height: 80px;
+    min-width:  80px;
+    min-height: 80px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.tic_tac_toe_circle_svg{
+    height: 100px;
+    width: 100px;
+    position: relative;
+    display: none;
+}
+
+.tic_tac_toe_circle_svg svg{
+    height:     70px;
+    width:      70px;
+    max-width:  70px;
+    max-height: 70px;
+    min-width:  70px;
+    min-height: 70px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+
+.tic_tac_toe_win_horizontal_left_line{
+    height: 0;
+    width: 5px;
+    border-radius: 50px;
+    background: #000000;
+    position: absolute;
+    left: 47px;
+    margin: auto;
+    z-index: 9;
+    transition: width 450ms ease-in-out, height 450ms ease-in-out;
+}
+
+.tic_tac_toe_win_horizontal_left_line.active{
+    height: 310px;
+}
+
+.tic_tac_toe_win_horizontal_middle_line{
+    height: 0px;
+    width: 5px;
+    border-radius: 50px;
+    background: #000000;
+    position: absolute;
+    right: 0;
+    left: -1px;
+    margin: auto;
+    z-index: 9;
+    transition: width 450ms ease-in-out, height 450ms ease-in-out;
+}
+
+.tic_tac_toe_win_horizontal_middle_line.active{
+    height: 310px;
+}
+
+.tic_tac_toe_win_horizontal_right_line{
+    height: 0px;
+    width: 5px;
+    border-radius: 50px;
+    background: #000000;
+    position: absolute;
+    right: 48px;
+    margin: auto;
+    z-index: 9;
+    transition: width 450ms ease-in-out, height 450ms ease-in-out;
+}
+
+.tic_tac_toe_win_horizontal_right_line.active{
+    height: 310px;
+}
+
+.tic_tac_toe_win_vertical_top_line{
+    height: 5px;
+    width: 0px;
+    border-radius: 50px;
+    background: #000000;
+    position: absolute;
+    top: 47px;
+    margin: auto;
+    z-index: 9;
+    transition: width 450ms ease-in-out, height 450ms ease-in-out;
+}
+
+.tic_tac_toe_win_vertical_top_line.active{
+    width: 310px;
+}
+
+.tic_tac_toe_win_vertical_middle_line{
+    height: 5px;
+    width: 0px;
+    border-radius: 50px;
+    background: #000000;
+    position: absolute;
+    top: -1px;
+    bottom: 0;
+    margin: auto;
+    z-index: 9;
+    transition: width 350ms ease-in-out, height 450ms ease-in-out;
+}
+
+.tic_tac_toe_win_vertical_middle_line.active{
+    width: 310px;
+}
+
+.tic_tac_toe_win_vertical_bottom_line{
+    height: 5px;
+    width: 0px;
+    border-radius: 50px;
+    background: #000000;
+    position: absolute;
+    bottom: 47px;
+    margin: auto;
+    z-index: 9;
+    transition: width 450ms ease-in-out, height 450ms ease-in-out;
+}
+
+.tic_tac_toe_win_vertical_bottom_line.active{
+    width: 310px;
+}
+
+.tic_tac_toe_win_cross_1_line{
+    height: 0px;
+    width: 5px;
+    border-radius: 50px;
+    background: #000000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 9;
+    transform: rotate(-45deg);
+    transition: width 450ms ease-in-out, height 450ms ease-in-out;
+}
+
+.tic_tac_toe_win_cross_1_line.active{
+    height: 410px;
+}
+
+.tic_tac_toe_win_cross_2_line{
+    height: 0px;
+    width: 5px;
+    border-radius: 50px;
+    background: #000000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 2px;
+    margin: auto;
+    z-index: 9;
+    transform: rotate(45deg);
+    transition: width 450ms ease-in-out, height 450ms ease-in-out;
+}
+
+.tic_tac_toe_win_cross_2_line.active{
+    height: 410px;
+}
+
+
+.tic_tac_toe_app_game_navbar{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    position: relative;
+}
+
+.tic_tac_toe_app_game_bottom_navbar{
+    width: 100%;
+    height: 50px;
+}
+
+.tic_tac_toe_reset_btn{
+    padding: 5px 0px;
+    text-align: center;
+    width: 80px;
+    color: #000000;
+    font-size: 18px;
+    background: #fff;
+    box-shadow: 0px 6px 10px 0px rgb(0 0 0 / 9%), 0px 1px 18px 0px rgb(0 0 0 / 7%), 0px 3px 5px -1px rgb(0 0 0 / 15%);
+    border: none!important;
+    outline: none!important;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: auto;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.tic_tac_toe_player_status_box_1{
+    height: 35px;
+    background: #fff;
+    box-shadow: 0px 6px 10px 0px rgb(0 0 0 / 9%), 0px 1px 18px 0px rgb(0 0 0 / 7%), 0px 3px 5px -1px rgb(0 0 0 / 15%);
+    position: absolute;
+    left: 10px;
+    /*margin-top: 20px;*/
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    margin-top: 10px;
+}
+
+.tic_tac_toe_player_status_box_1 svg{
+    height:     30px;
+    width:      30px;
+    min-width:  30px;
+    min-height: 30px;
+    max-width:  30px;
+    max-height: 30px;
+    margin: 2px 0px;
+    margin-left: 5px;
+}
+.tic_tac_toe_score_info{
+    font-size: 29px;
+    margin: -2px 5px;
+}
+.tic_tac_toe_x_score_info{
+    font-size: 28px;
+    margin: 2px 4px;
+    margin-right: 8px;
+}
+
+.tic_tac_toe_player_status_box_1_bar{
+    height: 3px;
+    width: 0;
+    background: #000000;
+    position: absolute;
+    bottom: 0;
+    transition: width 350ms ease-in-out, height 450ms ease-in-out;
+}
+
+.tic_tac_toe_player_status_box_1_bar.active{
+    width: 100%;
+    transform-origin: center;
+}
+
+
+.tic_tac_toe_player_status_box_2{
+    height: 35px;
+    background: #fff;
+    box-shadow: 0px 6px 10px 0px rgb(0 0 0 / 9%), 0px 1px 18px 0px rgb(0 0 0 / 7%), 0px 3px 5px -1px rgb(0 0 0 / 15%);
+    position: absolute;
+    right: 10px;
+    /*margin-top: 20px;*/
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    margin-top: 10px;
+}
+
+.tic_tac_toe_player_status_box_2 svg{
+    height:     23px;
+    width:      23px;
+    min-width:  23px;
+    min-height: 23px;
+    max-width:  23px;
+    max-height: 23px;
+    margin: 5px 0px;
+    margin-left: 5px;
+}
+.tic_tac_toe_score_info{
+    font-size: 29px;
+    margin: -2px 5px;
+}
+.tic_tac_toe_o_score_info{
+    font-size: 28px;
+    margin: 2px 4px;
+    margin-right: 8px;
+}
+
+.tic_tac_toe_player_status_box_2_bar{
+    height: 3px;
+    width: 0;
+    background: #000000;
+    position: absolute;
+    bottom: 0;
+    transition: width 350ms ease-in-out, height 450ms ease-in-out;
+}
+
+.tic_tac_toe_player_status_box_2_bar.active{
+    width: 100%;
+    transform-origin: center;
+}
+
+.tic_tac_toe_win_x_main_box{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(24, 23, 23, 0.5);
+    z-index: 99;
+    display: none;
+    opacity: 0;
+    transition: all 0.20s ease-in-out;
+    cursor: pointer;
+}
+
+.tic_tac_toe_win_x_sub_box{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    height: 160px;
+    width: 325px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%), 0px 3px 5px -1px rgb(0 0 0 / 20%);
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.tic_tac_toe_win_x_sub_box_svgbox{
+    height: 110px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+
+.tic_tac_toe_win_x_sub_box_svgbox svg{
+    height:     80px;
+    width:      80px;
+    min-width:  80px;
+    min-height: 80px;
+    max-width:  80px;
+    max-height: 80px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.tic_tac_toe_win_x_sub_box_winner{
+    font-size: 30px;
+    font-weight: 600;
+    margin: auto;
+    text-align: center;
+}
+
+.tic_tac_toe_win_o_main_box{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(24, 23, 23, 0.5);
+    z-index: 99;
+    display: none;
+    opacity: 0;
+    transition: all 0.20s ease-in-out;
+    cursor: pointer;
+}
+
+.tic_tac_toe_win_o_sub_box{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    height: 160px;
+    width: 325px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%), 0px 3px 5px -1px rgb(0 0 0 / 20%);
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.tic_tac_toe_win_o_sub_box_svgbox{
+    height: 110px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+
+.tic_tac_toe_win_o_sub_box_svgbox svg{
+    height:     65px;
+    width:      65px;
+    min-width:  65px;
+    min-height: 65px;
+    max-width:  65px;
+    max-height: 65px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.tic_tac_toe_win_o_sub_box_winner{
+    font-size: 30px;
+    font-weight: 600;
+    margin: auto;
+    text-align: center;
+}
+
+
+.tic_tac_toe_draw_main_box{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(24, 23, 23, 0.5);
+    z-index: 99;
+    display: none;
+    opacity: 0;
+    transition: all 0.20s ease-in-out;
+    cursor: pointer;
+}
+
+.tic_tac_toe_draw_sub_box{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    height: 160px;
+    width: 325px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%), 0px 3px 5px -1px rgb(0 0 0 / 20%);
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.tic_tac_toe_draw_inner_box{
+    display: flex;
+    justify-content: center;
+}
+
+.tic_tac_toe_draw_sub_box_x_svgbox{
+    height: 110px;
+    width: 35%;
+    overflow: hidden;
+    position: relative;
+}
+
+.tic_tac_toe_draw_sub_box_x_svgbox svg{
+    height: 80px;
+    width: 80px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.tic_tac_toe_draw_sub_box_o_svgbox{
+    height: 110px;
+    width: 35%;
+    overflow: hidden;
+    position: relative;
+}
+
+.tic_tac_toe_draw_sub_box_o_svgbox svg{
+    height:     65px;
+    width:      65px;
+    min-width:  65px;
+    min-height: 65px;
+    max-width:  65px;
+    max-height: 65px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.tic_tac_toe_draw_sub_box_winner{
+    font-size: 30px;
+    font-weight: 600;
+    margin: auto;
+    text-align: center;
+}
+
+@media only screen and (max-height:700px) and (max-width:450px) {/*470*/
+    .tic_tac_toe_app_box{
+        width:      70px;
+        height:     70px;
+        min-width:  70px;
+        min-height: 70px;
+        max-width:  70px;
+        max-height: 70px;
+    }
+
+    .tic_tac_toe_row_line{
+        width:     220px;
+        min-width: 220px;
+        max-width: 220px;
+    }
+
+    .tic_tac_toe_top_line{
+        height:     70px;
+        min-height: 70px;
+        max-height: 70px;
+    }
+
+    .tic_tac_toe_middle_line{
+        height:     70px;
+        min-height: 70px;
+        max-height: 70px;
+    }
+
+    .tic_tac_toe_bottom_line{
+        height:     70px;
+        min-height: 70px;
+        max-height: 70px;
+    }
+    .tic_tac_toe_win_vertical_top_line{
+        top: 33px;
+    }
+    .tic_tac_toe_win_vertical_top_line.active{
+        width:     220px;
+        min-width: 220px;
+        max-width: 220px;
+    }
+
+    .tic_tac_toe_win_vertical_middle_line.active{
+        width:     220px;
+        min-width: 220px;
+        max-width: 220px;
+    }
+
+    .tic_tac_toe_win_vertical_bottom_line{
+        bottom: 33px;
+    }
+
+    .tic_tac_toe_win_vertical_bottom_line.active{
+        width:     220px;
+        min-width: 220px;
+        max-width: 220px;
+    }
+
+    .tic_tac_toe_win_horizontal_left_line{
+        left: 32px;
+    }
+    .tic_tac_toe_win_horizontal_left_line.active{
+        height:     220px;
+        min-height: 220px;
+        max-height: 220px;
+    }
+
+    .tic_tac_toe_win_horizontal_middle_line.active{
+        height:     220px;
+        min-height: 220px;
+        max-height: 220px;
+    }
+
+    .tic_tac_toe_win_horizontal_right_line{
+        right: 33px;
+    }
+
+    .tic_tac_toe_win_horizontal_right_line.active{
+        height:     220px;
+        min-height: 220px;
+        max-height: 220px;
+    }
+
+    .tic_tac_toe_win_cross_1_line.active{
+        height: 290px;
+    }
+
+    .tic_tac_toe_win_cross_2_line.active{
+        height: 290px;
+    }
+
+    .tic_tac_toe_cross_svg{
+        height: 70px;
+        width:  70px;
+    }
+    
+    .tic_tac_toe_cross_svg svg{
+        height:     50px;
+        width:      50px;
+        max-width:  50px;
+        max-height: 50px;
+        min-width:  50px;
+        min-height: 50px;
+    }
+
+    .tic_tac_toe_circle_svg{
+        height: 70px;
+        width:  70px;
+    }
+
+    .tic_tac_toe_circle_svg svg{
+        height:     40px;
+        width:      40px;
+        max-width:  40px;
+        max-height: 40px;
+        min-width:  40px;
+        min-height: 40px;
+    }
+}
+
+
+
+@media only screen and (max-height:400px) and (max-width:280px) { /*420*/
+    .tic_tac_toe_app_box{
+        width:      60px;
+        height:     60px;
+        min-width:  60px;
+        min-height: 60px;
+        max-width:  60px;
+        max-height: 60px;
+    }
+
+    .tic_tac_toe_row_line{
+        width:     190px;
+        min-width: 190px;
+        max-width: 190px;
+    }
+
+    .tic_tac_toe_top_line{
+        height:     60px;
+        min-height: 60px;
+        max-height: 60px;
+    }
+
+    .tic_tac_toe_middle_line{
+        height:     60px;
+        min-height: 60px;
+        max-height: 60px;
+    }
+
+    .tic_tac_toe_bottom_line{
+        height:     60px;
+        min-height: 60px;
+        max-height: 60px;
+    }
+
+    .tic_tac_toe_win_vertical_top_line{
+        top: 23px;
+    }
+
+    .tic_tac_toe_win_vertical_top_line.active{
+        width:     190px;
+        min-width: 190px;
+        max-width: 190px;
+    }
+
+    .tic_tac_toe_win_vertical_middle_line.active{
+        width:     190px;
+        min-width: 190px;
+        max-width: 190px;
+    }
+
+    .tic_tac_toe_win_vertical_bottom_line{
+        bottom: 23px;
+    }
+
+    .tic_tac_toe_win_vertical_bottom_line.active{
+        width:     190px;
+        min-width: 190px;
+        max-width: 190px;
+    }
+
+    .tic_tac_toe_win_horizontal_left_line{
+        left: 23px;
+    }
+
+    .tic_tac_toe_win_horizontal_left_line.active{
+        height:     190px;
+        min-height: 190px;
+        max-height: 190px;
+    }
+
+    .tic_tac_toe_win_horizontal_middle_line.active{
+        height:     190px;
+        min-height: 190px;
+        max-height: 190px;
+    }
+
+    .tic_tac_toe_win_horizontal_right_line{
+        right: 23px;
+    }
+
+    .tic_tac_toe_win_horizontal_right_line.active{
+        height:     190px;
+        min-height: 190px;
+        max-height: 190px;
+    }
+
+    .tic_tac_toe_win_cross_1_line.active{
+        height: 245px;
+    }
+
+    .tic_tac_toe_win_cross_2_line.active{
+        height: 245px;
+    }
+
+    .tic_tac_toe_cross_svg{
+        height: 60px;
+        width:  60px;
+    }
+    
+    .tic_tac_toe_cross_svg svg{
+        height:     40px;
+        width:      40px;
+        max-width:  40px;
+        max-height: 40px;
+        min-width:  40px;
+        min-height: 40px;
+    }
+
+    .tic_tac_toe_circle_svg{
+        height: 60px;
+        width:  60px;
+    }
+
+    .tic_tac_toe_circle_svg svg{
+        height:     30px;
+        width:      30px;
+        max-width:  30px;
+        max-height: 30px;
+        min-width:  30px;
+        min-height: 30px;
+    }
+}
+
+
+@media only screen and (max-height:360px) and (max-width:250px) { /*480*/
+    .tic_tac_toe_app_box{
+        width:      50px;
+        height:     50px;
+        min-width:  50px;
+        min-height: 50px;
+        max-width:  50px;
+        max-height: 50px;
+    }
+
+    .tic_tac_toe_row_line{
+        width:     160px;
+        min-width: 160px;
+        max-width: 160px;
+    }
+
+    .tic_tac_toe_top_line{
+        height:     50px;
+        min-height: 50px;
+        max-height: 50px;
+    }
+
+    .tic_tac_toe_middle_line{
+        height:     50px;
+        min-height: 50px;
+        max-height: 50px;
+    }
+
+    .tic_tac_toe_bottom_line{
+        height:     50px;
+        min-height: 50px;
+        max-height: 50px;
+    }
+
+    .tic_tac_toe_win_vertical_top_line{
+        top: 22px;
+    }
+
+    .tic_tac_toe_win_vertical_top_line.active{
+        width:     160px;
+        min-width: 160px;
+        max-width: 160px;
+    }
+
+    .tic_tac_toe_win_vertical_middle_line.active{
+        width:     160px;
+        min-width: 160px;
+        max-width: 160px;
+    }
+    .tic_tac_toe_win_vertical_bottom_line{
+        bottom: 22px;
+    }
+    .tic_tac_toe_win_vertical_bottom_line.active{
+        width:     160px;
+        min-width: 160px;
+        max-width: 160px;
+    }
+
+    .tic_tac_toe_win_horizontal_left_line{
+        left: 22px;
+    }
+
+    .tic_tac_toe_win_horizontal_left_line.active{
+        height:     160px;
+        min-height: 160px;
+        max-height: 160px;
+    }
+
+    .tic_tac_toe_win_horizontal_middle_line.active{
+        height:     160px;
+        min-height: 160px;
+        max-height: 160px;
+    }
+
+    .tic_tac_toe_win_horizontal_right_line{
+        right: 22px;
+    }
+
+    .tic_tac_toe_win_horizontal_right_line.active{
+        height:     160px;
+        min-height: 160px;
+        max-height: 160px;
+    }
+
+    .tic_tac_toe_win_cross_1_line.active{
+        height: 210px;
+    }
+
+    .tic_tac_toe_win_cross_2_line.active{
+        height: 210px;
+    }
+
+    .tic_tac_toe_cross_svg{
+        height: 50px;
+        width:  50px;
+    }
+    
+    .tic_tac_toe_cross_svg svg{
+        height:     30px;
+        width:      30px;
+        max-width:  30px;
+        max-height: 30px;
+        min-width:  30px;
+        min-height: 30px;
+    }
+
+    .tic_tac_toe_circle_svg{
+        height: 50px;
+        width:  50px;
+    }
+
+    .tic_tac_toe_circle_svg svg{
+        height:     20px;
+        width:      20px;
+        max-width:  20px;
+        max-height: 20px;
+        min-width:  20px;
+        min-height: 20px;
+    }
+}
+
+@media only screen and (max-width:450px) {
+    /*  y   */
+    .tic_tac_toe_win_x_sub_box{
+        width: 75%;
+        height: fit-content;
+    }
+
+    .tic_tac_toe_win_x_sub_box_svgbox {
+        height: 80px;
+    }
+    .tic_tac_toe_win_x_sub_box_svgbox svg{
+        height:     65px;
+        width:      65px;
+        min-width:  65px;
+        min-height: 65px;
+        max-width:  65px;
+        max-height: 65px;
+    }
+
+    .tic_tac_toe_win_x_sub_box_winner {
+        font-size: 25px;
+        margin-bottom: 8px;
+    }
+    /*  o   */
+    .tic_tac_toe_win_o_sub_box{
+        width: 75%;
+        height: fit-content;
+    }
+
+    .tic_tac_toe_win_o_sub_box_svgbox {
+        height: 80px;
+    }
+    .tic_tac_toe_win_o_sub_box_svgbox svg{
+        height:     50px;
+        width:      50px;
+        min-width:  50px;
+        min-height: 50px;
+        max-width:  50px;
+        max-height: 50px;
+    }
+
+    .tic_tac_toe_win_o_sub_box_winner {
+        font-size: 25px;
+        margin-bottom: 8px;
+    }
+
+    /*  draw   */
+
+    .tic_tac_toe_draw_sub_box{
+        width: 75%;
+        height: fit-content;
+    }
+
+    .tic_tac_toe_draw_sub_box_x_svgbox {
+        height: 80px;
+    }
+    .tic_tac_toe_draw_sub_box_x_svgbox svg{
+        height:     65px;
+        width:      65px;
+        min-width:  65px;
+        min-height: 65px;
+        max-width:  65px;
+        max-height: 65px;
+    }
+
+    .tic_tac_toe_draw_sub_box_o_svgbox {
+        height: 80px;
+    }
+
+    .tic_tac_toe_draw_sub_box_o_svgbox svg{
+        height:     50px;
+        width:      50px;
+        min-width:  50px;
+        min-height: 50px;
+        max-width:  50px;
+        max-height: 50px;
+
+    }
+
+    .tic_tac_toe_draw_sub_box_winner{
+        font-size: 25px;
+        margin-bottom: 8px;
+    }
+
+    /* score */
+
+    .tic_tac_toe_player_status_box_1{
+        height: 30px;
+        margin-top: 8px;
+    }
+
+    .tic_tac_toe_player_status_box_1 svg{
+        height:     25px;
+        width:      25px;
+        min-width:  25px;
+        min-height: 25px;
+        max-width:  25px;
+        max-height: 25px;
+        margin: 2px 0px;
+        margin-left: 5px;
+    }
+
+    .tic_tac_toe_score_info {
+        font-size: 28px;
+        margin: -3px 5px;
+    }
+
+    .tic_tac_toe_x_score_info {
+        font-size: 20px;
+        margin: 4px 5px;
+    }
+
+    .tic_tac_toe_player_status_box_2{
+        height: 30px;
+        margin-top: 8px;
+    }
+
+    .tic_tac_toe_player_status_box_2 svg{
+        height:     20px;
+        width:      20px;
+        min-width:  20px;
+        min-height: 20px;
+        max-width:  20px;
+        max-height: 20px;
+        margin: 4px 0px;
+        margin-left: 5px;
+    }
+
+    .tic_tac_toe_o_score_info {
+        font-size: 20px;
+        margin: 4px 5px;
+    }
+
+    .tic_tac_toe_reset_btn {
+        width: 70px;
+        font-size: 17px;
+        padding: 3px 0px ;
+    }
+}
